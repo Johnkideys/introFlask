@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <h3> {{ session.get('name') }}</h3>
+    <!-- Contact Form -->
+    <!-- In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
+    <div class="row">
+      <div class="col-lg-8 mb-4">
+        <h3>Registration</h3>
+
+        <form method="POST">
+          <div class="control-group form-group">
+            <div class="controls">
+               {{ registerp1.name.label }}
+                {{ registerp1.name(class="form-control") }}
+                {% for error in registerp1.name.errors %}
+                    <div class = "alert alert-danger ">{{ error }}</div>
+                {% endfor %}
+
+              <p class="help-block"></p>
+            </div>
+          </div>
+          <div class="control-group form-group">
+            <div class="controls">
+              {{ registerp1.surname.label }}
+                {{ registerp1.surname(class="form-control") }}
+                {% for error in registerp1.surname.errors %}
+                    <div class = "alert alert-danger ">{{ error }}</div>
+                {% endfor %}
+            </div>
+          </div>
+
+
+
+          <div id="success"></div>
+          <!-- For success/fail messages -->
+            {{ registerp1.submit(class='btn btn-primary') }}
+            {{ registerp1.hidden_tag() }}
+        </form>
+      </div>
+
+    </div>
+    <!-- /.row -->
+{% endblock content %}
+
